@@ -1,0 +1,629 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Fabeaulous Feet — The Professional Pedicure Standard</title>
+  <meta name="description" content="The precision pedicure system built for professionals. 100% hygienic disposable discs. Zero blades. Trusted by nail technicians across North America and Mexico.">
+  <link href="https://api.fontshare.com/v2/css?f[]=clash-display@500,600,700&f[]=satoshi@400,500,700&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg: #0A0A0A;
+      --surface: #131313;
+      --surface2: #1C1C1C;
+      --border: #242424;
+      --text: #F0EAE0;
+      --text-muted: #8A7F74;
+      --text-faint: #3A3530;
+      --accent: #C4956A;
+      --accent-light: #E2B98C;
+      --accent-dim: rgba(196,149,106,0.10);
+      --accent-border: rgba(196,149,106,0.22);
+      --font-display: 'Clash Display', system-ui, sans-serif;
+      --font-body: 'Satoshi', system-ui, sans-serif;
+      --ease: cubic-bezier(0.22,1,0.36,1);
+      --r: 6px;
+      --r-lg: 14px;
+    }
+    *,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
+    html{scroll-behavior:smooth;-webkit-font-smoothing:antialiased;}
+    body{background:var(--bg);color:var(--text);font-family:var(--font-body);overflow-x:hidden;}
+    h1,h2,h3,h4{font-family:var(--font-display);font-weight:700;letter-spacing:-0.02em;line-height:1.08;}
+    p{line-height:1.7;color:var(--text-muted);}
+    a{text-decoration:none;}
+    img{display:block;max-width:100%;}
+    .container{width:100%;max-width:1160px;margin:0 auto;padding:0 28px;}
+
+    /* NAV */
+    nav{position:fixed;top:0;left:0;right:0;z-index:100;padding:22px 0;transition:background 0.4s var(--ease),padding 0.4s var(--ease),border-color 0.4s var(--ease);border-bottom:1px solid transparent;}
+    nav.scrolled{background:rgba(10,10,10,0.94);backdrop-filter:blur(24px);-webkit-backdrop-filter:blur(24px);padding:14px 0;border-color:var(--border);}
+    .nav-inner{display:flex;align-items:center;justify-content:space-between;gap:24px;}
+    .nav-logo img{height:34px;width:auto;}
+    .nav-logo-text{font-family:var(--font-display);font-size:17px;font-weight:700;color:var(--text);letter-spacing:-0.01em;}
+    .nav-links{display:flex;align-items:center;gap:4px;list-style:none;}
+    .nav-links a{color:var(--text-muted);font-size:14px;font-weight:500;padding:8px 14px;border-radius:var(--r);transition:color 0.2s;}
+    .nav-links a:hover{color:var(--text);}
+    .nav-cta{background:var(--accent)!important;color:#0A0A0A!important;font-weight:600!important;transition:background 0.2s,transform 0.2s!important;}
+    .nav-cta:hover{background:var(--accent-light)!important;transform:translateY(-1px)!important;}
+    .nav-mobile-cta{display:none;}
+    @media(max-width:768px){.nav-links{display:none;}.nav-mobile-cta{display:inline-flex;}}
+
+    /* BUTTONS */
+    .btn{display:inline-flex;align-items:center;gap:8px;padding:14px 28px;border-radius:var(--r);font-family:var(--font-body);font-size:15px;font-weight:600;transition:all 0.25s var(--ease);cursor:pointer;border:none;outline:none;}
+    .btn-primary{background:var(--accent);color:#0A0A0A;}
+    .btn-primary:hover{background:var(--accent-light);transform:translateY(-2px);box-shadow:0 12px 32px rgba(196,149,106,0.22);}
+    .btn-outline{background:transparent;color:var(--text);border:1px solid var(--border);}
+    .btn-outline:hover{border-color:var(--accent-border);color:var(--accent-light);background:var(--accent-dim);}
+    .btn-lg{padding:17px 34px;font-size:16px;}
+
+    /* HERO */
+    .hero{min-height:100vh;display:flex;align-items:center;padding:120px 0 80px;background:radial-gradient(ellipse 70% 55% at 72% 50%,rgba(196,149,106,0.07) 0%,transparent 65%),var(--bg);}
+    .hero-inner{display:grid;grid-template-columns:1fr 1fr;gap:64px;align-items:center;}
+    .hero-badge{display:inline-flex;align-items:center;gap:8px;padding:6px 14px;background:var(--accent-dim);border:1px solid var(--accent-border);border-radius:100px;font-size:11px;font-weight:700;color:var(--accent-light);letter-spacing:0.09em;text-transform:uppercase;margin-bottom:30px;}
+    .hero-badge::before{content:'';width:6px;height:6px;background:var(--accent);border-radius:50%;flex-shrink:0;}
+    .hero h1{font-size:clamp(48px,6.5vw,86px);color:var(--text);margin-bottom:24px;}
+    .hero h1 em{color:var(--accent);font-style:normal;}
+    .hero-sub{font-size:18px;color:var(--text-muted);max-width:460px;margin-bottom:40px;line-height:1.65;}
+    .hero-actions{display:flex;gap:14px;flex-wrap:wrap;}
+    .hero-visual{display:flex;align-items:center;justify-content:center;position:relative;}
+    .hero-glow{position:absolute;width:420px;height:420px;background:radial-gradient(circle,rgba(196,149,106,0.11) 0%,transparent 70%);border-radius:50%;pointer-events:none;}
+    .hero-img{width:100%;max-width:500px;position:relative;z-index:1;filter:drop-shadow(0 32px 64px rgba(0,0,0,0.6));animation:float 7s ease-in-out infinite;}
+    @keyframes float{0%,100%{transform:translateY(0);}50%{transform:translateY(-14px);}}
+    .scroll-hint{display:flex;align-items:center;gap:10px;margin-top:48px;font-size:12px;color:var(--text-faint);letter-spacing:0.1em;text-transform:uppercase;}
+    .scroll-dot{width:22px;height:38px;border:1px solid var(--border);border-radius:20px;display:flex;align-items:flex-start;justify-content:center;padding:6px;}
+    .scroll-dot::after{content:'';width:4px;height:8px;background:var(--accent);border-radius:4px;animation:scrolldot 1.8s ease-in-out infinite;}
+    @keyframes scrolldot{0%,100%{transform:translateY(0);opacity:1;}50%{transform:translateY(8px);opacity:0.3;}}
+
+    /* TRUST BAR */
+    .trust-bar{border-top:1px solid var(--border);border-bottom:1px solid var(--border);padding:18px 0;background:var(--surface);overflow-x:auto;}
+    .trust-inner{display:flex;align-items:center;justify-content:center;min-width:600px;}
+    .trust-item{display:flex;align-items:center;gap:9px;padding:10px 30px;border-right:1px solid var(--border);font-size:12px;font-weight:700;color:var(--text-muted);letter-spacing:0.07em;text-transform:uppercase;white-space:nowrap;}
+    .trust-item:last-child{border-right:none;}
+    .trust-dot{width:5px;height:5px;background:var(--accent);border-radius:50%;flex-shrink:0;}
+
+    /* SECTIONS */
+    .section{padding:104px 0;}
+    .section-label{display:block;font-size:11px;font-weight:700;letter-spacing:0.14em;text-transform:uppercase;color:var(--accent);margin-bottom:16px;}
+    .section-title{font-size:clamp(34px,4.5vw,58px);color:var(--text);margin-bottom:18px;}
+    .section-sub{font-size:18px;color:var(--text-muted);max-width:560px;margin-bottom:60px;line-height:1.65;}
+    .fade-up{opacity:0;transform:translateY(28px);}
+
+    /* PROBLEM */
+    .problem{background:var(--surface);}
+    .compare-grid{display:grid;grid-template-columns:1fr 1fr;border-radius:var(--r-lg);overflow:hidden;border:1px solid var(--border);}
+    .compare-col{padding:52px 48px;}
+    .compare-col.old{background:var(--bg);}
+    .compare-col.new{background:var(--surface2);border-left:1px solid var(--border);}
+    .compare-header{display:flex;align-items:center;gap:14px;margin-bottom:36px;}
+    .compare-badge{padding:4px 12px;border-radius:100px;font-size:11px;font-weight:700;letter-spacing:0.08em;text-transform:uppercase;}
+    .old-badge{background:rgba(255,255,255,0.04);color:var(--text-faint);}
+    .new-badge{background:var(--accent-dim);color:var(--accent-light);border:1px solid var(--accent-border);}
+    .compare-heading{font-family:var(--font-display);font-size:20px;font-weight:600;}
+    .old .compare-heading{color:var(--text-muted);}
+    .new .compare-heading{color:var(--text);}
+    .compare-list{list-style:none;display:flex;flex-direction:column;gap:18px;}
+    .compare-list li{display:flex;align-items:flex-start;gap:12px;font-size:15px;line-height:1.55;}
+    .ci{width:18px;height:18px;flex-shrink:0;margin-top:2px;}
+    .old .compare-list li{color:var(--text-muted);}
+    .old .ci{color:#3A3530;}
+    .new .compare-list li{color:var(--text);}
+    .new .ci{color:var(--accent);}
+
+    /* STEPS */
+    .steps-grid{display:grid;grid-template-columns:repeat(3,1fr);border:1px solid var(--border);border-radius:var(--r-lg);overflow:hidden;}
+    .step-card{padding:52px 40px;background:var(--surface);border-right:1px solid var(--border);position:relative;}
+    .step-card:last-child{border-right:none;}
+    .step-number{font-family:var(--font-display);font-size:72px;font-weight:700;line-height:1;margin-bottom:28px;color:var(--border);}
+    .step-title{font-size:20px;font-weight:600;color:var(--text);margin-bottom:12px;}
+    .step-body{font-size:15px;color:var(--text-muted);line-height:1.7;}
+    .step-accent-line{position:absolute;top:0;left:0;right:0;height:2px;background:transparent;transition:background 0.3s;}
+    .step-card:hover .step-accent-line{background:var(--accent);}
+
+    /* PRODUCTS */
+    .products-bg{background:var(--surface);}
+    .products-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:14px;}
+    .product-card{background:var(--bg);border:1px solid var(--border);border-radius:var(--r-lg);overflow:hidden;transition:border-color 0.3s var(--ease),transform 0.3s var(--ease);}
+    .product-card:hover{border-color:var(--accent-border);transform:translateY(-4px);}
+    .product-img-wrap{aspect-ratio:4/3;overflow:hidden;background:var(--surface2);}
+    .product-img-wrap img{width:100%;height:100%;object-fit:cover;object-position:center;transition:transform 0.5s var(--ease);}
+    .product-card:hover .product-img-wrap img{transform:scale(1.04);}
+    .product-body{padding:22px;border-top:1px solid var(--border);}
+    .product-tag{display:block;font-size:10px;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;color:var(--accent);margin-bottom:7px;}
+    .product-name{font-size:17px;font-weight:600;color:var(--text);margin-bottom:6px;font-family:var(--font-display);}
+    .product-desc{font-size:13px;color:var(--text-muted);line-height:1.65;}
+
+    /* TESTIMONIAL */
+    .testi-section{background:var(--bg);}
+    .testi-card{background:var(--surface);border:1px solid var(--border);border-radius:var(--r-lg);padding:64px 60px;max-width:820px;margin:0 auto;position:relative;overflow:hidden;}
+    .testi-card::before{content:'\201C';font-family:var(--font-display);font-size:160px;color:var(--accent);opacity:0.12;position:absolute;top:10px;left:44px;line-height:1;}
+    .testi-text{font-size:21px;line-height:1.7;color:var(--text);font-weight:400;margin-bottom:36px;position:relative;z-index:1;}
+    .testi-author{display:flex;align-items:center;gap:16px;}
+    .author-avatar{width:46px;height:46px;background:var(--accent-dim);border:1px solid var(--accent-border);border-radius:50%;display:flex;align-items:center;justify-content:center;font-family:var(--font-display);font-size:17px;font-weight:700;color:var(--accent);flex-shrink:0;}
+    .author-name{font-family:var(--font-display);font-size:15px;font-weight:600;color:var(--text);margin-bottom:2px;}
+    .author-role{font-size:13px;color:var(--text-muted);}
+
+    /* STATS */
+    .stats-row{display:grid;grid-template-columns:repeat(3,1fr);background:var(--border);border:1px solid var(--border);border-radius:var(--r-lg);overflow:hidden;margin-top:56px;}
+    .stat-item{background:var(--surface);padding:44px 36px;text-align:center;}
+    .stat-value{font-family:var(--font-display);font-size:54px;font-weight:700;color:var(--accent);line-height:1;margin-bottom:8px;}
+    .stat-label{font-size:12px;color:var(--text-muted);text-transform:uppercase;letter-spacing:0.09em;font-weight:600;}
+
+    /* DUAL CTA */
+    .cta-section{padding:120px 0;background:var(--surface);}
+    .cta-grid{display:grid;grid-template-columns:1fr 1fr;gap:18px;}
+    .cta-card{border:1px solid var(--border);border-radius:var(--r-lg);padding:60px 48px;display:flex;flex-direction:column;gap:18px;transition:border-color 0.3s var(--ease),transform 0.3s var(--ease);}
+    .cta-card:hover{border-color:var(--accent-border);transform:translateY(-4px);}
+    .cta-card.primary{background:var(--accent);border-color:var(--accent);}
+    .cta-card.primary:hover{background:var(--accent-light);border-color:var(--accent-light);}
+    .cta-icon{width:50px;height:50px;background:rgba(255,255,255,0.1);border-radius:var(--r);display:flex;align-items:center;justify-content:center;}
+    .cta-card:not(.primary) .cta-icon{background:var(--accent-dim);border:1px solid var(--accent-border);}
+    .cta-card-title{font-family:var(--font-display);font-size:30px;font-weight:700;line-height:1.15;}
+    .cta-card.primary .cta-card-title{color:#0A0A0A;}
+    .cta-card:not(.primary) .cta-card-title{color:var(--text);}
+    .cta-card-sub{font-size:15px;line-height:1.65;}
+    .cta-card.primary .cta-card-sub{color:rgba(10,10,10,0.62);}
+    .cta-card:not(.primary) .cta-card-sub{color:var(--text-muted);}
+    .cta-arrow{display:flex;align-items:center;gap:8px;font-size:14px;font-weight:700;letter-spacing:0.03em;margin-top:auto;padding-top:10px;}
+    .cta-card.primary .cta-arrow{color:rgba(10,10,10,0.65);}
+    .cta-card:not(.primary) .cta-arrow{color:var(--accent);}
+
+    /* FOOTER */
+    footer{border-top:1px solid var(--border);padding:64px 0 36px;background:var(--bg);}
+    .footer-inner{display:grid;grid-template-columns:2fr 1fr 1fr;gap:56px;margin-bottom:52px;}
+    .footer-brand-desc{font-size:14px;color:var(--text-muted);max-width:300px;margin-top:14px;line-height:1.75;}
+    .footer-heading{font-family:var(--font-display);font-size:12px;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;color:var(--text-muted);margin-bottom:20px;}
+    .footer-links{list-style:none;display:flex;flex-direction:column;gap:10px;}
+    .footer-links a{color:var(--text-muted);font-size:14px;transition:color 0.2s;}
+    .footer-links a:hover{color:var(--accent-light);}
+    .footer-bottom{border-top:1px solid var(--border);padding-top:24px;display:flex;align-items:center;justify-content:space-between;gap:20px;}
+    .footer-copy{font-size:12px;color:var(--text-faint);}
+    .footer-socials{display:flex;gap:10px;}
+    .social-link{width:34px;height:34px;border:1px solid var(--border);border-radius:var(--r);display:flex;align-items:center;justify-content:center;color:var(--text-muted);font-size:13px;font-weight:700;transition:border-color 0.2s,color 0.2s;}
+    .social-link:hover{border-color:var(--accent-border);color:var(--accent);}
+
+    /* MOBILE */
+    @media(max-width:900px){
+      .products-grid{grid-template-columns:repeat(2,1fr);}
+    }
+    @media(max-width:768px){
+      .hero-inner{grid-template-columns:1fr;text-align:center;gap:40px;}
+      .hero-visual{order:-1;}
+      .hero-actions{justify-content:center;}
+      .hero-sub{margin:0 auto 40px;}
+      .hero-badge{margin-bottom:20px;}
+      .compare-grid{grid-template-columns:1fr;}
+      .compare-col.new{border-left:none;border-top:2px solid var(--accent);}
+      .steps-grid{grid-template-columns:1fr;}
+      .step-card{border-right:none;border-bottom:1px solid var(--border);}
+      .step-card:last-child{border-bottom:none;}
+      .cta-grid{grid-template-columns:1fr;}
+      .testi-card{padding:40px 28px;}
+      .testi-text{font-size:17px;}
+      .stats-row{grid-template-columns:1fr;}
+      .footer-inner{grid-template-columns:1fr;gap:36px;}
+      .footer-bottom{flex-direction:column;text-align:center;}
+      .scroll-hint{justify-content:center;}
+    }
+  </style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav id="nav">
+  <div class="container">
+    <div class="nav-inner">
+      <a href="/" style="display:flex;align-items:center;gap:10px;">
+        <img src="https://www.fabeaulousfeet.com/images/Fabeaulous_Feet_logo-200.png" alt="Fabeaulous Feet" style="height:32px;width:auto;" id="nav-logo-img">
+        <span class="nav-logo-text" id="nav-logo-fallback" style="display:none;">Fabeaulous Feet</span>
+      </a>
+      <ul class="nav-links">
+        <li><a href="#system">The System</a></li>
+        <li><a href="#products">Products</a></li>
+        <li><a href="#distributors">Distributors</a></li>
+        <li><a href="https://www.fabeaulousfeet.com/shop-international.php" class="nav-cta">Shop Now</a></li>
+      </ul>
+      <a href="https://www.fabeaulousfeet.com/shop-international.php" class="btn btn-primary nav-mobile-cta" style="padding:10px 18px;font-size:13px;">Shop</a>
+    </div>
+  </div>
+</nav>
+
+<!-- HERO -->
+<section class="hero" id="hero">
+  <div class="container">
+    <div class="hero-inner">
+      <div>
+        <div class="hero-badge">Professional Grade · Since 2006</div>
+        <h1>The Professional<br><em>Pedicure Standard.</em></h1>
+        <p class="hero-sub">Precision pedicure technology built for estheticians who refuse to compromise. 100% hygienic disposable discs. Zero blades. Results your clients will talk about.</p>
+        <div class="hero-actions">
+          <a href="https://www.fabeaulousfeet.com/shop-international.php" class="btn btn-primary btn-lg">Shop the System</a>
+          <a href="#distributors" class="btn btn-outline btn-lg">Become a Distributor</a>
+        </div>
+        <div class="scroll-hint">
+          <div class="scroll-dot"></div>
+          Scroll to explore
+        </div>
+      </div>
+      <div class="hero-visual">
+        <div class="hero-glow"></div>
+        <img
+          src="https://www.fabeaulousfeet.com/images/slider/img3.png"
+          alt="Fabeaulous Feet Professional Pedicure System Kit"
+          class="hero-img"
+          onerror="this.src='https://www.fabeaulousfeet.com/images/slider/01.jpg'"
+        >
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- TRUST BAR -->
+<div class="trust-bar">
+  <div class="container">
+    <div class="trust-inner">
+      <div class="trust-item"><div class="trust-dot"></div>Designed in Canada</div>
+      <div class="trust-item"><div class="trust-dot"></div>Trusted Since 2006</div>
+      <div class="trust-item"><div class="trust-dot"></div>100% Hygienic Discs</div>
+      <div class="trust-item"><div class="trust-dot"></div>Zero Blade Contact</div>
+      <div class="trust-item"><div class="trust-dot"></div>Ships Worldwide</div>
+    </div>
+  </div>
+</div>
+
+<!-- PROBLEM -->
+<section class="problem section" id="problem">
+  <div class="container">
+    <span class="section-label fade-up">Why It Matters</span>
+    <h2 class="section-title fade-up">The industry has<br>a blade problem.</h2>
+    <p class="section-sub fade-up">Most pedicure tools cut, risk cross-contamination, and wear out the technician. Fabeaulous Feet was engineered to fix all three.</p>
+    <div class="compare-grid fade-up">
+      <div class="compare-col old">
+        <div class="compare-header">
+          <span class="compare-badge old-badge">The Old Way</span>
+          <span class="compare-heading">Blades &amp; Scrapers</span>
+        </div>
+        <ul class="compare-list">
+          <li>
+            <svg class="ci" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><line x1="15" y1="9" x2="9" y2="15"/><line x1="9" y1="9" x2="15" y2="15"/></svg>
+            Cuts and nicks clients — a liability risk every session
+          </li>
+          <li>
+            <svg class="ci" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><line x1="15" y1="9" x2="9" y2="15"/><line x1="9" y1="9" x2="15" y2="15"/></svg>
+            Cross-contamination without proper sterilization between clients
+          </li>
+          <li>
+            <svg class="ci" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><line x1="15" y1="9" x2="9" y2="15"/><line x1="9" y1="9" x2="15" y2="15"/></svg>
+            Back and shoulder strain from repetitive manual pressure
+          </li>
+          <li>
+            <svg class="ci" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><line x1="15" y1="9" x2="9" y2="15"/><line x1="9" y1="9" x2="15" y2="15"/></svg>
+            Results that don't last — skin returns rough within days
+          </li>
+        </ul>
+      </div>
+      <div class="compare-col new">
+        <div class="compare-header">
+          <span class="compare-badge new-badge">Fabeaulous Feet</span>
+          <span class="compare-heading">Precision System</span>
+        </div>
+        <ul class="compare-list">
+          <li>
+            <svg class="ci" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="9 12 11 14 15 10"/></svg>
+            Zero blade contact — safe for even the most sensitive skin
+          </li>
+          <li>
+            <svg class="ci" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="9 12 11 14 15 10"/></svg>
+            Self-adhesive disposable discs — fresh hygiene for every client, every time
+          </li>
+          <li>
+            <svg class="ci" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="9 12 11 14 15 10"/></svg>
+            12V electric precision — less effort, consistent professional results
+          </li>
+          <li>
+            <svg class="ci" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="9 12 11 14 15 10"/></svg>
+            Silky smooth finish that lasts far longer than any manual method
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- HOW IT WORKS -->
+<section class="section" id="system">
+  <div class="container">
+    <span class="section-label fade-up">The Process</span>
+    <h2 class="section-title fade-up">Three steps.<br>Perfect results.</h2>
+    <p class="section-sub fade-up">The Fabeaulous Feet system replaces your entire callus treatment workflow with a cleaner, faster, safer method.</p>
+    <div class="steps-grid">
+      <div class="step-card fade-up">
+        <div class="step-accent-line"></div>
+        <div class="step-number">01</div>
+        <h3 class="step-title">Attach a Fresh Disc</h3>
+        <p class="step-body">Peel a self-adhesive REMOVE disc from the pack and press it onto the stainless steel tip. Two seconds. Guaranteed hygiene for every single client.</p>
+      </div>
+      <div class="step-card fade-up">
+        <div class="step-accent-line"></div>
+        <div class="step-number">02</div>
+        <h3 class="step-title">File with Precision</h3>
+        <p class="step-body">The 12V electric motor does the work. Gently reduce callus and dry skin without pressure or risk. Sized to fit around and between every toe.</p>
+      </div>
+      <div class="step-card fade-up">
+        <div class="step-accent-line"></div>
+        <div class="step-number">03</div>
+        <h3 class="step-title">Polish to Perfection</h3>
+        <p class="step-body">Swap to the POLISH disc and smooth the surface to a silky finish. Peel the used disc off. Done. Your client leaves with results they'll rebook for.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PRODUCTS -->
+<section class="section products-bg" id="products">
+  <div class="container">
+    <span class="section-label fade-up">The System</span>
+    <h2 class="section-title fade-up">Everything you need,<br>precision-built.</h2>
+    <div class="products-grid">
+      <div class="product-card fade-up">
+        <div class="product-img-wrap">
+          <img src="https://www.fabeaulousfeet.com/images/slider/01.jpg" alt="Fabeaulous Feet Electric File System" loading="lazy">
+        </div>
+        <div class="product-body">
+          <span class="product-tag">Core Tool</span>
+          <h3 class="product-name">Electric File</h3>
+          <p class="product-desc">12V variable speed motor with stainless steel tip. Available in multiple colors. The foundation of every professional pedicure.</p>
+        </div>
+      </div>
+      <div class="product-card fade-up">
+        <div class="product-img-wrap">
+          <img src="https://www.fabeaulousfeet.com/images/slider/03.jpg" alt="REMOVE Dermabrasion Discs" loading="lazy">
+        </div>
+        <div class="product-body">
+          <span class="product-tag">Callus Treatment</span>
+          <h3 class="product-name">REMOVE Discs</h3>
+          <p class="product-desc">Exclusive self-adhesive hygienic disposable discs. Tackles callus and dry skin safely with zero cross-contamination risk.</p>
+        </div>
+      </div>
+      <div class="product-card fade-up">
+        <div class="product-img-wrap">
+          <img src="https://www.fabeaulousfeet.com/images/slider/05.jpg" alt="POLISH Finishing Discs" loading="lazy">
+        </div>
+        <div class="product-body">
+          <span class="product-tag">Finishing</span>
+          <h3 class="product-name">POLISH Discs</h3>
+          <p class="product-desc">Smooth the skin surface to perfection after REMOVE treatment. The finish that makes your clients rebook.</p>
+        </div>
+      </div>
+      <div class="product-card fade-up">
+        <div class="product-img-wrap">
+          <img src="https://www.fabeaulousfeet.com/images/slider/07.jpg" alt="Vacuum Lamp Professional Station" loading="lazy">
+        </div>
+        <div class="product-body">
+          <span class="product-tag">Professional Setup</span>
+          <h3 class="product-name">Vacuum Lamp</h3>
+          <p class="product-desc">Integrated vacuum and light station. Clean workspace, perfect visibility. Every treatment, every time.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- TESTIMONIAL + STATS -->
+<section class="testi-section section" id="proof">
+  <div class="container">
+    <span class="section-label fade-up" style="text-align:center;display:block;">What Professionals Say</span>
+    <div class="testi-card fade-up">
+      <p class="testi-text">"I have been waiting for this improvement to the electric file. As far as I and my clients are concerned, it is the best file system ever. The smoothness lasts far longer than any other — and it's half the work."</p>
+      <div class="testi-author">
+        <div class="author-avatar">JP</div>
+        <div>
+          <div class="author-name">Judy Pentland</div>
+          <div class="author-role">Good Hair Days</div>
+        </div>
+      </div>
+    </div>
+    <div class="stats-row">
+      <div class="stat-item fade-up">
+        <div class="stat-value" data-count="20" data-suffix="+">20+</div>
+        <div class="stat-label">Years in the Industry</div>
+      </div>
+      <div class="stat-item fade-up">
+        <div class="stat-value" data-count="0" data-suffix="">0</div>
+        <div class="stat-label">Blades. Zero Cuts.</div>
+      </div>
+      <div class="stat-item fade-up">
+        <div class="stat-value" data-count="100" data-suffix="%">100%</div>
+        <div class="stat-label">Hygienic Every Session</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- DUAL CTA -->
+<section class="cta-section" id="distributors">
+  <div class="container">
+    <span class="section-label fade-up" style="display:block;margin-bottom:14px;">Get Started</span>
+    <h2 class="section-title fade-up" style="margin-bottom:12px;">Two ways to work<br>with Fabeaulous Feet.</h2>
+    <p class="section-sub fade-up">Whether you're a professional ready to upgrade your service or a business ready to carry the system, your path starts here.</p>
+    <div class="cta-grid">
+      <a href="https://www.fabeaulousfeet.com/shop-international.php" class="cta-card primary fade-up">
+        <div class="cta-icon">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="rgba(10,10,10,0.7)" stroke-width="2"><path d="M6 2L3 6v14a2 2 0 002 2h14a2 2 0 002-2V6l-3-4z"/><line x1="3" y1="6" x2="21" y2="6"/><path d="M16 10a4 4 0 01-8 0"/></svg>
+        </div>
+        <h3 class="cta-card-title">I'm a Professional</h3>
+        <p class="cta-card-sub">Shop the complete Fabeaulous Feet system. Starter kits, disc refills, and accessories. Ships to Canada, the US, and internationally.</p>
+        <div class="cta-arrow">
+          Shop Now
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+        </div>
+      </a>
+      <a href="mailto:sales@fabeaulousfeet.com?subject=Distributor%20Inquiry%20-%20Fabeaulous%20Feet" class="cta-card fade-up">
+        <div class="cta-icon">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="var(--accent)" stroke-width="2"><rect x="2" y="7" width="20" height="14" rx="2"/><polyline points="16 2 12 6 8 2"/><line x1="12" y1="6" x2="12" y2="16"/></svg>
+        </div>
+        <h3 class="cta-card-title">I Want to Carry This</h3>
+        <p class="cta-card-sub">Join our distributor network. Beauty supply stores, spas, and salon chains across North America and Mexico. Wholesale pricing available.</p>
+        <div class="cta-arrow">
+          Become a Distributor
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+        </div>
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="container">
+    <div class="footer-inner">
+      <div>
+        <img src="https://www.fabeaulousfeet.com/images/Fabeaulous_Feet_logo-200.png" alt="Fabeaulous Feet" style="height:36px;width:auto;" onerror="this.style.display='none'">
+        <p class="footer-brand-desc">The precision pedicure system built by professionals, for professionals. Hygienic. Safe. Effective. Since 2006.</p>
+      </div>
+      <div>
+        <h4 class="footer-heading">Quick Links</h4>
+        <ul class="footer-links">
+          <li><a href="https://www.fabeaulousfeet.com/shop-international.php">Shop International</a></li>
+          <li><a href="https://www.fabeaulousfeet.com/shop-mexico.php">Tienda Mexico</a></li>
+          <li><a href="https://www.fabeaulousfeet.com/distributors.php">Distributors</a></li>
+          <li><a href="https://www.fabeaulousfeet.com/faqs.php">FAQs</a></li>
+          <li><a href="https://www.fabeaulousfeet.com/about-us.php">About Us</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4 class="footer-heading">Contact</h4>
+        <ul class="footer-links">
+          <li><a href="mailto:info@fabeaulousfeet.com">info@fabeaulousfeet.com</a></li>
+          <li><a href="tel:+14034887579">+1 (403) 488-7579</a></li>
+          <li><a href="tel:+523228888628">+52 (322) 888-8628</a></li>
+          <li><a href="https://wa.me/5213228888628">WhatsApp Us</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p class="footer-copy">© 2006–2026 Fabeaulous Feet. All rights reserved.</p>
+      <div class="footer-socials">
+        <a href="https://www.facebook.com/fabeaulous.feet/" class="social-link" aria-label="Facebook">f</a>
+        <a href="https://www.instagram.com/fabeaulousfeet/" class="social-link" aria-label="Instagram">in</a>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<!-- GSAP -->
+<script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/gsap.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/ScrollTrigger.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/SplitText.min.js"></script>
+
+<script>
+  gsap.registerPlugin(ScrollTrigger, SplitText);
+
+  // Logo fallback
+  const logoImg = document.getElementById('nav-logo-img');
+  if (logoImg) {
+    logoImg.addEventListener('error', () => {
+      logoImg.style.display = 'none';
+      document.getElementById('nav-logo-fallback').style.display = 'block';
+    });
+  }
+
+  // Nav scroll
+  const nav = document.getElementById('nav');
+  window.addEventListener('scroll', () => {
+    nav.classList.toggle('scrolled', window.scrollY > 60);
+  });
+
+  // Hero SplitText headline
+  const heroH1 = document.querySelector('.hero h1');
+  if (heroH1) {
+    const split = new SplitText(heroH1, { type: 'chars,words', aria: true });
+    gsap.set(split.chars, { opacity: 0, y: 32, rotationX: -25 });
+    gsap.to(split.chars, {
+      opacity: 1, y: 0, rotationX: 0,
+      stagger: 0.024, duration: 0.75,
+      ease: 'power3.out', delay: 0.15
+    });
+  }
+
+  // Hero content stagger
+  gsap.from('.hero-badge', { opacity: 0, y: 16, duration: 0.55, ease: 'power3.out', delay: 0.08 });
+  gsap.from('.hero-sub',   { opacity: 0, y: 18, duration: 0.65, ease: 'power3.out', delay: 0.5  });
+  gsap.from('.hero-actions', { opacity: 0, y: 18, duration: 0.65, ease: 'power3.out', delay: 0.65 });
+  gsap.from('.scroll-hint',  { opacity: 0, duration: 0.6, delay: 1.1 });
+  gsap.from('.hero-visual',  { opacity: 0, x: 36, duration: 1, ease: 'power3.out', delay: 0.25 });
+
+  // Trust bar
+  gsap.from('.trust-item', {
+    opacity: 0, y: 8, stagger: 0.07, duration: 0.45, ease: 'power3.out',
+    scrollTrigger: { trigger: '.trust-bar', start: 'top 88%' }
+  });
+
+  // Generic fade-up elements
+  gsap.utils.toArray('.fade-up').forEach(el => {
+    gsap.fromTo(el,
+      { opacity: 0, y: 26 },
+      {
+        opacity: 1, y: 0, duration: 0.75, ease: 'power3.out',
+        scrollTrigger: { trigger: el, start: 'top 87%', once: true }
+      }
+    );
+  });
+
+  // Section label slide-in
+  gsap.utils.toArray('.section-label').forEach(el => {
+    gsap.fromTo(el,
+      { opacity: 0, x: -14 },
+      { opacity: 1, x: 0, duration: 0.5, ease: 'power3.out',
+        scrollTrigger: { trigger: el, start: 'top 87%', once: true }
+      }
+    );
+  });
+
+  // Step cards stagger
+  gsap.from('.step-card', {
+    opacity: 0, y: 30, stagger: 0.12, duration: 0.7, ease: 'power3.out',
+    scrollTrigger: { trigger: '.steps-grid', start: 'top 82%' }
+  });
+
+  // Product cards stagger
+  gsap.from('.product-card', {
+    opacity: 0, y: 30, stagger: 0.08, duration: 0.65, ease: 'power3.out',
+    scrollTrigger: { trigger: '.products-grid', start: 'top 82%' }
+  });
+
+  // CTA cards
+  gsap.from('.cta-card', {
+    opacity: 0, y: 24, stagger: 0.14, duration: 0.75, ease: 'power3.out',
+    scrollTrigger: { trigger: '.cta-grid', start: 'top 82%' }
+  });
+
+  // Stat counters
+  document.querySelectorAll('.stat-value[data-count]').forEach(el => {
+    const target = parseInt(el.dataset.count);
+    const suffix = el.dataset.suffix || '';
+    ScrollTrigger.create({
+      trigger: el, start: 'top 82%', once: true,
+      onEnter: () => {
+        const obj = { val: 0 };
+        gsap.to(obj, {
+          val: target, duration: 1.6, ease: 'power2.out',
+          onUpdate: () => { el.textContent = Math.round(obj.val) + suffix; }
+        });
+      }
+    });
+  });
+
+  // Magnetic buttons
+  document.querySelectorAll('.btn, .cta-card').forEach(el => {
+    const xTo = gsap.quickTo(el, 'x', { duration: 0.35, ease: 'power3.out' });
+    const yTo = gsap.quickTo(el, 'y', { duration: 0.35, ease: 'power3.out' });
+    el.addEventListener('mousemove', e => {
+      const r = el.getBoundingClientRect();
+      xTo((e.clientX - (r.left + r.width / 2)) * 0.2);
+      yTo((e.clientY - (r.top + r.height / 2)) * 0.2);
+    });
+    el.addEventListener('mouseleave', () => { xTo(0); yTo(0); });
+  });
+</script>
+</body>
+</html>
